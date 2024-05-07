@@ -3,13 +3,17 @@ const bodyParser = require('body-parser');
 const amqp = require('amqplib');
 const documentRoutes = require('./routes/orderRoutes');
 const  sequelize  = require('./config/connection');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swaggerOptions');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use('/api', documentRoutes);
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 async function connectRabbitMQ() {
     const rabbitUrl = 'amqp://localhost';
     try {

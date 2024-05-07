@@ -12,7 +12,54 @@ async function publishOrder(data) {
 }
 
 const axios = require('axios');
-
+/**
+ * @swagger
+ * /api/orders:
+ *   post:
+ *     summary: Create an order
+ *     tags: [Orders]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - userId
+ *               - productId
+ *               - quantity
+ *             properties:
+ *               userId:
+ *                 type: integer
+ *               productId:
+ *                 type: integer
+ *               quantity:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Order created successfully
+ *       400:
+ *         description: Error in creating order
+ *       500:
+ *         description: Server error
+ *
+ * /api/stories/{userId}:
+ *   get:
+ *     summary: Get order history for a user
+ *     tags: [Orders]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: The user id
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved order history
+ *       500:
+ *         description: Server error
+ */
 router.post('/orders', async (req, res) => {
     const { userId, productId, quantity } = req.body;
 
