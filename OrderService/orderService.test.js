@@ -20,7 +20,7 @@ describe('Order Service Integration Tests', () => {
 
     describe('GET /stories/:userId', () => {
         it('should retrieve order history for a user and return 200 status', async () => {
-            const userId = 1; // Переконайтеся, що такий користувач існує у вашій тестовій базі
+            const userId = 1;
             const res = await request(app)
                 .get(`/api/stories/${userId}`);
             expect(res.statusCode).toEqual(200);

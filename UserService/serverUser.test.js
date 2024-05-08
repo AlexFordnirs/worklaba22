@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('./serverUser'); // Імпортуйте екземпляр вашого Express-додатку
+const app = require('./serverUser');
 
 describe('User Service Integration Tests', () => {
     describe('POST /users', () => {
@@ -17,7 +17,7 @@ describe('User Service Integration Tests', () => {
 
     describe('GET /users/:userId/orders', () => {
         it('should retrieve order history for a user and return 200 status', async () => {
-            const userId = 1; // Ensure this user exists for test
+            const userId = 1;
             const res = await request(app)
                 .get(`/api/users/${userId}/orders`);
             expect(res.statusCode).toEqual(200);
